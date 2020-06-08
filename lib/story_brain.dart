@@ -51,11 +51,19 @@ class StoryBrain {
 
   int storyNumber = 0;
 
-  void nextStory(int userChoice) {}
-
-//TODO: Step 20 - Download the story plan here: https://drive.google.com/uc?export=download&id=1KU6EghkO9Hf2hRM0756xFHgNaZyGCou3
-
-//TODO: Step 21 - Using the story plan, update nextStory() to change the storyNumber depending on the choice made by the user. e.g. if choiceNumber was equal to 1 and the storyNumber is 0, the storyNumber should become 2.
+  void nextStory(int userChoice) {
+    switch (storyNumber) {
+      case 0:
+        storyNumber = (userChoice == 1) ? 2 : 1;
+        break;
+      case 1:
+        storyNumber = (userChoice == 1) ? 2 : 3;
+        break;
+      case 2:
+        storyNumber = (userChoice == 1) ? 5 : 4;
+        break;
+    }
+  }
 
 //TODO: Step 22 - In nextStory() if the storyNumber is equal to 3 or 4 or 5, that means it's the end of the game and it should call a method called restart() that resets the storyNumber to 0.
 
