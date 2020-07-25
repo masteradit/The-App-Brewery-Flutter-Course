@@ -8,10 +8,8 @@ class LoadingScreen extends StatefulWidget {
 
 class _LoadingScreenState extends State<LoadingScreen> {
   void getLocation() async {
-    print(await Geolocator()
-        .getCurrentPosition(desiredAccuracy: LocationAccuracy.low));
-    print('done');
-    Position position = await Geolocator().getCurrentPosition(
+    Geolocator geolocator = Geolocator()..forceAndroidLocationManager = true;
+    Position position = await geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.low,
     );
     print(position);
