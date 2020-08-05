@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'coin_data.dart';
+import 'coin_data.dart';
 
 class PriceScreen extends StatefulWidget {
   @override
@@ -76,7 +77,20 @@ class _PriceScreenState extends State<PriceScreen> {
     getData();
   }
 
-  //TODO: For bonus points, create a method that loops through the cryptoList and generates a CryptoCard for each.
+  Column makeCards() {
+    List<CryptoCard> cryptoCards = [];
+    for (String crypto in cryptoList) {
+      cryptoCards.add(CryptoCard(
+        value: isWaiting ? '?' : coinValues[crypto],
+        selectedCurrency: selectedCurrency,
+        cryptoCurrency: crypto,
+      ));
+    }
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: cryptoCards,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -88,26 +102,7 @@ class _PriceScreenState extends State<PriceScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              CryptoCard(
-                value: isWaiting ? '?' : coinValues['BTC'],
-                selectedCurrency: selectedCurrency,
-                cryptoCurrency: 'BTC',
-              ),
-              CryptoCard(
-                value: isWaiting ? '?' : coinValues['ETH'],
-                selectedCurrency: selectedCurrency,
-                cryptoCurrency: 'ETH',
-              ),
-              CryptoCard(
-                value: isWaiting ? '?' : coinValues['LTC'],
-                selectedCurrency: selectedCurrency,
-                cryptoCurrency: 'LTC',
-              ),
-            ],
-          ),
+          makeCards(),
           Container(
             height: 150.0,
             alignment: Alignment.center,
