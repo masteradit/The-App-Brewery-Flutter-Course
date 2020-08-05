@@ -54,16 +54,15 @@ class _PriceScreenState extends State<PriceScreen> {
     );
   }
 
-  String value = '?';
+  Map<String, String> coinValues = {};
 
   //TODO 7: Figure out a way of displaying a '?' on screen while we're waiting for the price data to come back. Hint: You'll need a ternary operator.
 
-  //TODO 6: Update this method to receive a Map containing the crypto:price key value pairs. Then use that map to update the CryptoCards.
   void getData() async {
     try {
-      double data = await CoinData().getCoinData(selectedCurrency);
+      Map<String, String> data = await CoinData().getCoinData(selectedCurrency);
       setState(() {
-        value = data.toStringAsFixed(0);
+        coinValues = data;
       });
     } catch (e) {
       print(e);
@@ -92,17 +91,17 @@ class _PriceScreenState extends State<PriceScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               CryptoCard(
-                value: value,
+                value: coinValues['BTC'],
                 selectedCurrency: selectedCurrency,
                 cryptoCurrency: 'BTC',
               ),
               CryptoCard(
-                value: value,
+                value: coinValues['ETH'],
                 selectedCurrency: selectedCurrency,
                 cryptoCurrency: 'ETH',
               ),
               CryptoCard(
-                value: value,
+                value: coinValues['LTC'],
                 selectedCurrency: selectedCurrency,
                 cryptoCurrency: 'LTC',
               ),
