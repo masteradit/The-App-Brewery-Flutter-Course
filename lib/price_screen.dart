@@ -86,11 +86,11 @@ class _PriceScreenState extends State<PriceScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          //TODO 2: You'll need to able to pass the selectedCurrency, value and cryptoCurrency to the constructor of this CryptoCard Widget.
           //TODO 3: You'll need to use a Column Widget to contain the three CryptoCards.
           CryptoCard(
             value: value,
             selectedCurrency: selectedCurrency,
+            cryptoCurrency: 'BTC',
           ),
           Container(
             height: 150.0,
@@ -110,10 +110,12 @@ class CryptoCard extends StatelessWidget {
     Key key,
     @required this.value,
     @required this.selectedCurrency,
+    @required this.cryptoCurrency,
   });
 
   final String value;
   final String selectedCurrency;
+  final String cryptoCurrency;
 
   @override
   Widget build(BuildContext context) {
@@ -128,7 +130,7 @@ class CryptoCard extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
           child: Text(
-            '1 BTC = $value $selectedCurrency',
+            '1 $cryptoCurrency = $value $selectedCurrency',
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 20.0,
