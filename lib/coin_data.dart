@@ -39,7 +39,8 @@ class CoinData {
   Future getCoinData(String selectedCurrency) async {
     Map<String, String> cryptoPrices = {};
     for (String crypto in cryptoList) {
-      String requestURL = '$coinAPIURL/BTC/$selectedCurrency?apikey=$apiKey';
+      String requestURL =
+          '$coinAPIURL/$crypto/$selectedCurrency?apikey=$apiKey';
       http.Response response = await http.get(requestURL);
       if (response.statusCode == 200) {
         var decodedData = jsonDecode(response.body);
