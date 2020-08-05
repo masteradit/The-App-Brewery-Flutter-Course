@@ -1,7 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-import 'coin_data.dart';
 import 'dart:io' show Platform;
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+import 'coin_data.dart';
 
 class PriceScreen extends StatefulWidget {
   @override
@@ -9,8 +11,7 @@ class PriceScreen extends StatefulWidget {
 }
 
 class _PriceScreenState extends State<PriceScreen> {
-  //TODO 6: Update the default currency to AUD, the first item in the currencyList.
-  String selectedCurrency = 'USD';
+  String selectedCurrency = 'AUD';
 
   DropdownButton<String> androidDropdown() {
     List<DropdownMenuItem<String>> dropdownItems = [];
@@ -27,8 +28,8 @@ class _PriceScreenState extends State<PriceScreen> {
       items: dropdownItems,
       onChanged: (value) {
         setState(() {
-          //TODO 2: Call getData() when the picker/dropdown changes.
           selectedCurrency = value;
+          getData();
         });
       },
     );
@@ -45,8 +46,8 @@ class _PriceScreenState extends State<PriceScreen> {
       itemExtent: 32.0,
       onSelectedItemChanged: (selectedIndex) {
         print(selectedIndex);
-        //TODO 1: Save the selected currency to the property selectedCurrency
-        //TODO 2: Call getData() when the picker/dropdown changes.
+        selectedCurrency = currenciesList[selectedIndex];
+        getData();
       },
       children: pickerItems,
     );
@@ -56,7 +57,7 @@ class _PriceScreenState extends State<PriceScreen> {
 
   void getData() async {
     try {
-      double data = await CoinData().getCoinData();
+      double data = await CoinData().getCoinData(selectedCurrency);
       setState(() {
         bitcoinValue = data.toStringAsFixed(0);
       });
@@ -92,8 +93,7 @@ class _PriceScreenState extends State<PriceScreen> {
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
                 child: Text(
-                  //TODO 5: Update the currency name depending on the selectedCurrency.
-                  '1 BTC = $bitcoinValue USD',
+                  '1 BTC = $bitcoinValue $selectedCurrency',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 20.0,
