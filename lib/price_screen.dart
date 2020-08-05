@@ -55,12 +55,13 @@ class _PriceScreenState extends State<PriceScreen> {
   }
 
   Map<String, String> coinValues = {};
-
-  //TODO 7: Figure out a way of displaying a '?' on screen while we're waiting for the price data to come back. Hint: You'll need a ternary operator.
+  bool isWaiting = false;
 
   void getData() async {
+    isWaiting = true;
     try {
       Map<String, String> data = await CoinData().getCoinData(selectedCurrency);
+      isWaiting = false;
       setState(() {
         coinValues = data;
       });
@@ -91,17 +92,17 @@ class _PriceScreenState extends State<PriceScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               CryptoCard(
-                value: coinValues['BTC'],
+                value: isWaiting ? '?' : coinValues['BTC'],
                 selectedCurrency: selectedCurrency,
                 cryptoCurrency: 'BTC',
               ),
               CryptoCard(
-                value: coinValues['ETH'],
+                value: isWaiting ? '?' : coinValues['ETH'],
                 selectedCurrency: selectedCurrency,
                 cryptoCurrency: 'ETH',
               ),
               CryptoCard(
-                value: coinValues['LTC'],
+                value: isWaiting ? '?' : coinValues['LTC'],
                 selectedCurrency: selectedCurrency,
                 cryptoCurrency: 'LTC',
               ),
