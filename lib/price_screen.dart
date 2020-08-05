@@ -86,11 +86,25 @@ class _PriceScreenState extends State<PriceScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          //TODO 3: You'll need to use a Column Widget to contain the three CryptoCards.
-          CryptoCard(
-            value: value,
-            selectedCurrency: selectedCurrency,
-            cryptoCurrency: 'BTC',
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              CryptoCard(
+                value: value,
+                selectedCurrency: selectedCurrency,
+                cryptoCurrency: 'BTC',
+              ),
+              CryptoCard(
+                value: value,
+                selectedCurrency: selectedCurrency,
+                cryptoCurrency: 'ETH',
+              ),
+              CryptoCard(
+                value: value,
+                selectedCurrency: selectedCurrency,
+                cryptoCurrency: 'LTC',
+              ),
+            ],
           ),
           Container(
             height: 150.0,
