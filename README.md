@@ -1,10 +1,10 @@
-# The-App-Brewery-Flutter-Course
-A Github repo to keep a track of all the projects of The App Brewery Flutter Course.
+# The App Brewery Flutter Course 🍺
+A Github repo to keep a track of all the projects of [The App Brewery Flutter Course](https://www.appbrewery.co/p/flutter-development-bootcamp-with-dart).
 
-# How to navigate this repository
+# How to navigate this repository 🧭
 To see each of the apps made during the course, switch to the branch corresponding to the app (or click on the link) as given below. All the branches have detailed commits to help you in understanding the process of making the app.
 
-# Apps
+# Apps list 📃
 
 ## Todoey ✓
 - A todolist app to keep track of all your tasks.
@@ -75,14 +75,14 @@ To see each of the apps made during the course, switch to the branch correspondi
 
 ![Dicee App](https://github.com/londonappbrewery/Images/raw/master/dicee-demo.gif)
 
-## Mi Card
+## Mi Card 📇
 - A personal business card app.
 - Checkout to branch `Section6` or [click here](https://github.com/masteradit/The-App-Brewery-Flutter-Course/tree/Section6) to see the source code.
 
-## I Am Poor
+## I Am Poor 🪨
 - I Am Poor app.
 - Checkout to branch `Section5` or [click here](https://github.com/masteradit/The-App-Brewery-Flutter-Course/tree/Section5) to see the source code.
 
-## I Am Rich
+## I Am Rich 💎
 - I Am Rich app
 - Checkout to branch `Section3` or [click here](https://github.com/masteradit/The-App-Brewery-Flutter-Course/tree/Section3) to see the source code.
